@@ -1,2 +1,7 @@
-# angular-placeholders-webjar
-WebJar wrapped version of joshdmiller/angular-placeholders
+Angular Placeholders WebJar
+
+More info: http://webjars.org
+
+Upstream: https://github.com/joshdmiller/angular-placeholders
+
+Documentation: http://joshdmiller.github.com/angular-placeholders

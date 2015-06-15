@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+    
+    <packaging>jar</packaging>
+    <groupId>org.webjars</groupId>
+    <artifactId>angular-placeholders</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Angular Placeholders</name>
+    <description>WebJar for Angular Placeholders</description>
+    <url>http://webjars.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <upstream.version>0.9</upstream.version>
+        <upstream.url1>https://raw.githubusercontent.com/joshdmiller/angular-placeholders/gh-pages/placeholders-0.0.1-SNAPSHOT.js</upstream.url1>
+        <upstream.url2>https://raw.githubusercontent.com/joshdmiller/angular-placeholders/gh-pages/placeholders-0.0.1-SNAPSHOT.min.js</upstream.url2>
+        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</destDir>
+        <requirejs>
+            {
+                "paths": {
+                    "angular-placeholders": "angular-placeholders",
+                    "angular-placeholders-min": "angular-placeholders.min"
+                },
+                "shim": {
+                    "angular-placeholders": ["angular"]
+                }
+            }
+        </requirejs>
+    </properties>
+
+    <developers>
+        <developer>
+            <id>metasim</id>
+            <name>Simeon H.K. Fitch</name>
+            <email>fitch@datamininglab.com</email>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>LGPL</name>
+            <url>https://raw.githubusercontent.com/joshdmiller/angular-placeholders/master/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>http://github.com/webjars/angular-placeholders</url>
+        <connection>scm:git:https://github.com/webjars/angular-placeholders.git</connection>
+        <developerConnection>scm:git:https://github.com/webjars/angular-placeholders.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>angularjs</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals><goal>run</goal></goals>
+                        <configuration>
+                            <target>
+                                <mkdir dir="${destDir}"/>
+                                <echo message="download scripts"/>
+                                <get src="${upstream.url1}" dest="${destDir}/${project.artifactId}.js"/>
+                                <get src="${upstream.url2}" dest="${destDir}/${project.artifactId}.min.js"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.1</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.5</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>sonatype-nexus-staging</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
