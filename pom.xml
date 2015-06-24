@@ -10,16 +10,16 @@
     
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
-    <artifactId>angular-placeholders</artifactId>
+    <artifactId>metasim-angular-placeholders</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Angular Placeholders</name>
+    <name>Angular Placeholders (metasim)</name>
     <description>WebJar for Angular Placeholders</description>
     <url>http://webjars.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <upstream.version>0.0.1</upstream.version>
-        <upstream.url>https://github.com/metasim/angular-placeholders/releases/download/v0.0.1/angular-placeholders-0.0.1-bin.zip</upstream.url>
+        <upstream.url>https://github.com/metasim/angular-placeholders/releases/download/v${upstream.version}/angular-placeholders-${upstream.version}-bin.zip</upstream.url>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</destDir>
         <requirejs>
             {
@@ -51,9 +51,9 @@
     </licenses>
 
     <scm>
-        <url>http://github.com/webjars/angular-placeholders</url>
-        <connection>scm:git:https://github.com/webjars/angular-placeholders.git</connection>
-        <developerConnection>scm:git:https://github.com/webjars/angular-placeholders.git</developerConnection>
+        <url>http://github.com/webjars/metasim-angular-placeholders</url>
+        <connection>scm:git:https://github.com/webjars/metasim-angular-placeholders.git</connection>
+        <developerConnection>scm:git:https://github.com/webjars/metasim-angular-placeholders.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
     
@@ -83,7 +83,7 @@
                                 <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}"/>
                                 <echo message="moving resources"/>
                                 <move todir="${destDir}">
-                                    <fileset dir="${project.build.directory}/${project.artifactId}-${upstream.version}">
+                                    <fileset dir="${project.build.directory}/angular-placeholders-${upstream.version}">
                                         <include name="*.js"/>
                                     </fileset>
                                 </move>
