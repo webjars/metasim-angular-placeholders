@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>metasim-angular-placeholders</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>Angular Placeholders (metasim)</name>
     <description>WebJar for Angular Placeholders</description>
     <url>http://webjars.org</url>
@@ -54,7 +54,7 @@
         <url>http://github.com/webjars/metasim-angular-placeholders</url>
         <connection>scm:git:https://github.com/webjars/metasim-angular-placeholders.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/metasim-angular-placeholders.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>metasim-angular-placeholders-0.0.1</tag>
     </scm>
     
     <dependencies>
@@ -77,14 +77,14 @@
                         <goals><goal>run</goal></goals>
                         <configuration>
   <target>
-                                <echo message="download archive"/>
-                                <get src="${upstream.url}" dest="${project.build.directory}/${project.artifactId}.zip"/>
-                                <echo message="unzip archive"/>
-                                <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}"/>
-                                <echo message="moving resources"/>
+                                <echo message="download archive" />
+                                <get src="${upstream.url}" dest="${project.build.directory}/${project.artifactId}.zip" />
+                                <echo message="unzip archive" />
+                                <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}" />
+                                <echo message="moving resources" />
                                 <move todir="${destDir}">
                                     <fileset dir="${project.build.directory}/angular-placeholders-${upstream.version}">
-                                        <include name="*.js"/>
+                                        <include name="*.js" />
                                     </fileset>
                                 </move>
                             </target>
